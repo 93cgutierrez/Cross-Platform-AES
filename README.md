@@ -2,16 +2,17 @@
 
 This project contains the implementation of (iOS Objective C, iOS Swift, Android, Java, Javascript, NodeJS)
 
-## Platforms supported 
+## Platforms supported
 
 1. iOS
 2. Android
 3. NodeJS
 4. PHP
+5. Flutter
 
 ## Features:
 
-1. Cross platform support. Encryption-Decryption works across iOS, Android and Node.js. 
+1. Cross platform support. Encryption-Decryption works across iOS, Android, Flutter and Node.js.
 
 2. Automatically RandomIV is added while encryption and remove first randomized blocks while decryption.
 
@@ -19,8 +20,8 @@ This project contains the implementation of (iOS Objective C, iOS Swift, Android
 
 4.  Support for SHA-256 for hashing the key. Never use plain text as encryption key. Always hash the plain text key and then use for encryption. AES permits the use of 256-bit keys. Breaking a symmetric 256-bit key by brute force requires 2^128 times more computational power than a 128-bit key. A device that could check a billion billion (10^18) AES keys per second would in theory require about 3×10^51 years to exhaust the 256-bit key space.
 
-## One of the key objective is to make AES work on all the platforms with simple implementation. 
-Complex logics such as generating IV and sha256 the key are done within the library. 
+## One of the key objective is to make AES work on all the platforms with simple implementation.
+Complex logics such as generating IV and sha256 the key are done within the library.
 
 ## Simple Approach
 ### All Platforms
@@ -57,6 +58,21 @@ println("cipherText $cipherText")
 
 val decryptedString = cryptLib.decryptCipherTextWithRandomIV(cipherText, key)
 println("decryptedString $decryptedString")
+```
+### Flutter
+1. Depend on it
+Add this to your package's pubspec.yaml file:
+```yaml
+dependencies:
+  cryptlib: ^0.0.1
+```
+
+```dart
+_encrypted = await Cryptlib.getEncryptedString(
+          "your key", "plain text");
+
+_decrypted = await Cryptlib.getDecryptedString(
+                    "your key", "encrypted text");
 ```
 
 ### Javascript / NodeJS / Web
@@ -104,7 +120,7 @@ decryptedString this is my plain text
 ```
 
 ### Few Tests
-Here are few cipher texts. Try decrypting with iOS or Android or NodeJS. 
+Here are few cipher texts. Try decrypting with iOS or Android or NodeJS.
 #### Basic Example:
 ```
 Cipher Text: "GfTE0IK4zk039+042LwPvsTjr0A8LqBDcxDWAc41YmwxNjZVJ3CcuDxWXsulbUjE"
