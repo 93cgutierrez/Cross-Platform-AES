@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'cryptlib'
-  s.version          = '0.0.1'
+  s.version          = '0.0.3'
   s.summary          = 'This plugin is interfacing Cryptlib library in flutter'
   s.description      = <<-DESC
 This plugin is interfacing Cryptlib library in flutter
