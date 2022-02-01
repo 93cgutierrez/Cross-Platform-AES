@@ -10,21 +10,21 @@ class Cryptlib {
     return version;
   }
 
-  static Future<String> getEncryptedString(String key, String text) async {
+  static Future<String?> getEncryptedString(String key, String text) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("key", () => key);
     args.putIfAbsent("text", () => text);
-    final String encrypted =
+    final String? encrypted =
         await _channel.invokeMethod('getEncryptedString', args);
     return encrypted;
   }
 
-  static Future<String> getDecryptedString(
+  static Future<String?> getDecryptedString(
       String key, String encryptedText) async {
     Map<String, dynamic> args = <String, dynamic>{};
     args.putIfAbsent("key", () => key);
     args.putIfAbsent("encryptedText", () => encryptedText);
-    final String encrypted =
+    final String? encrypted =
         await _channel.invokeMethod('getDecryptedString', args);
     return encrypted;
   }
